@@ -1,0 +1,13 @@
+espectaculos:
+    resource: "@EspectaculosBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+ejempo_blog:
+    resource: "@EjempoBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
