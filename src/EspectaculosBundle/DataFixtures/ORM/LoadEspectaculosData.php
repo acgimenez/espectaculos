@@ -22,9 +22,12 @@ Class LoadEspectaculosData extends AbstractFixture implements OrderedFixtureInte
 		$Nombres = array();
 
 		$sala = $this->getReference('Sala1');
+		$tipo = $this->getReference('Tipo1');
 		$nombre = new Espectaculo();
 		$nombre-> setNombre ('Rapido y furioso 8');
 		$nombre-> setSala ($sala);
+		$nombre-> setTipo ($tipo);
+
 
 		$Nombres[] = $nombre;
 

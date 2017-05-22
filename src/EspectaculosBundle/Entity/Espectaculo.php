@@ -28,9 +28,13 @@ class Espectaculo
 	 */
 	protected $sala;
 
-
+/**
+	 * @ORM\ManyToOne(targetEntity="TipoEspectaculos")
+	 */
+	protected $Tipo;
 
 	
+
 	public function getId(){
 		return $this->id;
 	}
@@ -51,6 +55,12 @@ class Espectaculo
 		$this->sala = $asala;
 	}
 
+	public function getTipo(){
+		return $this->tipo;
+	}
+
+	public function setTipo($atipo){
+		$this->tipo = $atipo;
 
 		
 }
