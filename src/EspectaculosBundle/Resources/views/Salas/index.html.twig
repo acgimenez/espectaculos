@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	{% for sala in salas %}
+		
+		<p>{{sala.nombre}}</p>
+		<p>{{sala.direccion}}</p>
+		<p>{{sala.telefono}}</p>
+		
+	{% endfor %}
+{% endblock %}	

@@ -38,6 +38,11 @@ Class LoadTipo_EspectaculosData extends AbstractFixture implements OrderedFixtur
 		}
 
 		$manager->flush();
+	
+
+		$this->addReference("Tipo1",$Tipos[0]);
+		$this->addReference("Tipo2",$Tipos[1]);
+		$this->addReference("Tipo3",$Tipos[2]);
 	}
 
 	public function getOrder(){

@@ -31,7 +31,7 @@ class Espectaculo
 /**
 	 * @ORM\ManyToOne(targetEntity="TipoEspectaculos")
 	 */
-	protected $Tipo;
+	protected $tipo;
 
 	
 
@@ -62,5 +62,5 @@ class Espectaculo
 	public function setTipo($atipo){
 		$this->tipo = $atipo;
 
-		
+		}
 }

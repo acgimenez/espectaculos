@@ -7,11 +7,15 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet type="text/css" href ="{{ asset('css/bootstrap.min.css') }}">
         {% block stylesheets %}{% endblock %}
+        <link rel="stylesheet type="text/css" href ="{{ asset('css/styles.css') }}">
     </head>
     <body>
+
+        {% include 'navbar.html.twig' %}
+
         {% block body %}{% endblock %}
 
-        <script type="text/javascript" src="{{ asset('js/query-3.2.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 
         {% block javascripts %}{% endblock %}

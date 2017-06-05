@@ -39,6 +39,7 @@ Class LoadSalaData extends AbstractFixture implements OrderedFixtureInterface
 		$manager->flush();
 
 		$this->addReference("Sala1",$salas[0]);
+		$this->addReference("Sala2",$salas[1]);
 	}
 
 	public function getOrder(){
