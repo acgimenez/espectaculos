@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lista de Espectaculos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Sala</th>
+                <th>Fecha</th>
+                <th>Tipo</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for espectaculo in espectaculos %}
+            <tr>
+                <td>{{ espectaculo.nombre }}</td>
+                <td>{{ espectaculo.sala }}</td>
+                <td>{{ "espectaculo.fecha" }}</td> 
+                <td>{{ espectaculo.tipo }}</td> 
+                <td>{{ espectaculo.description }}</td>
+                <td><img src="{{ espectaculo.imagen }}" alt="Imagen no disponible" height="100" width="100" ></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('espectaculo_show', { 'id': espectaculo.id }) }}">mostrar</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('espectaculo_edit', { 'id': espectaculo.id }) }}">Editar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('espectaculo_new') }}">Crear un nuevo espectaculo</a>
+        </li>
+    </ul>
+{% endblock %}

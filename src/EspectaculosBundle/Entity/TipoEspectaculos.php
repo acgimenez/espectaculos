@@ -38,5 +38,9 @@ class TipoEspectaculos
 		$this->nombre = $aNombre;
 	}
 
+	public function __toString(){
+		return $this->getNombre();
+	}
+	
 
 }

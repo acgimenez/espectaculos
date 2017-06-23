@@ -19,6 +19,7 @@ Class LoadEspectaculosData extends AbstractFixture implements OrderedFixtureInte
 	public function load(ObjectManager $manager)
 
 	{
+		$fechadesde="10-04-17";
 		$Nombres = array();
 
 		$sala = $this->getReference('Sala2');
@@ -34,7 +35,7 @@ Class LoadEspectaculosData extends AbstractFixture implements OrderedFixtureInte
 		$sala = $this->getReference('Sala2');
 		$tipo = $this->getReference('Tipo1');
 		$nombre = new Espectaculo();
-		$nombre -> setNombre ('Rey Arturo');
+		$nombre-> setNombre ('Rey Arturo');
 		$nombre-> setSala ($sala);
 		$nombre-> setTipo ($tipo);
 
@@ -43,7 +44,7 @@ Class LoadEspectaculosData extends AbstractFixture implements OrderedFixtureInte
 		$sala = $this->getReference('Sala1');
 		$tipo = $this->getReference('Tipo2');
 		$nombre = new Espectaculo();
-		$nombre -> setNombre ('Mas respeto que soy tu madre');
+		$nombre-> setNombre ('Mas respeto que soy tu madre');
 		$nombre-> setSala ($sala);
 		$nombre-> setTipo ($tipo);
 

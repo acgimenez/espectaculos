@@ -28,17 +28,44 @@ class Espectaculo
 	 */
 	protected $sala;
 
-/**
+	/**
+	 * @ORM\Column(type="date", name="Desde", nullable=true)
+	 */
+	protected $fecha;
+	/**
 	 * @ORM\ManyToOne(targetEntity="TipoEspectaculos")
 	 */
 	protected $tipo;
+	/** 
+	 * @ORM\Column(type="text")
+	 */
+	protected $description;	
+	/**
+	 * @ORM\Column(type="string", length=100)
+	 */
+	protected $imagen;
 
-	
 
 	public function getId(){
 		return $this->id;
 	}
 
+	public function getDescription(){
+		return $this->description;
+	}
+
+	public function setDescription($adescription){
+		$this->description = $adescription;
+	}
+
+	public function getImagen(){
+		return $this->imagen;
+	}
+
+	public function setImagen($aimagen){
+		$this->imagen = $aimagen;
+	}
+	
 	public function getNombre(){
 		return $this->nombre;
 	}
@@ -55,6 +82,15 @@ class Espectaculo
 		$this->sala = $asala;
 	}
 
+	public function getFecha(){
+		return $this->fecha;
+	}
+
+	public function setFecha($afecha){
+		$this->fecha = $afecha;
+	}
+
+
 	public function getTipo(){
 		return $this->tipo;
 	}
@@ -63,4 +99,9 @@ class Espectaculo
 		$this->tipo = $atipo;
 
 		}
+
+	public function __toString(){
+		return $this->getnombre(); 
+	}
+	
 }

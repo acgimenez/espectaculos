@@ -1,4 +1,28 @@
 {% extends 'base.html.twig' %}
  {% block body %}
-	Hello World!
- {% endblock %}	
+    {{ form(form) }}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                 <th>Sala</th>
+                 <th>Tipo</th> 
+                 <th>Fecha</th> 
+                 <th>Descripcion</th>
+                 <th>Imagen</th>             
+             </tr>
+        </thead>
+        <tbody>
+        {% for espectaculo in espectaculos %}
+            <tr>
+                <td>{{ espectaculo.nombre }}</td>
+                <td>{{ espectaculo.sala }}</td>
+                <td>{{ espectaculo.tipo }}</td> 
+                <td style="color:red">{{ 'espectaculo.fecha' }}</td>             
+                <td  >{{ espectaculo.description }}</td>
+                <td><img src="{{ espectaculo.imagen }}" alt="Imagen no disponible" height="100" width="100" ></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+  {% endblock %}	
