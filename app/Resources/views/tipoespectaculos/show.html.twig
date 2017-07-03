@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('tipoespectaculos_index') }}">Back to the list</a>
+            <a href="{{ path('tipoespectaculos_index') }}">Volver a la lista</a>
         </li>
         <li>
-            <a href="{{ path('tipoespectaculos_edit', { 'id': tipoEspectaculo.id }) }}">Edit</a>
+            <a href="{{ path('tipoespectaculos_edit', { 'id': tipoEspectaculo.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

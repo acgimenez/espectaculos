@@ -18,8 +18,8 @@
                 <td>{{ espectaculo.nombre }}</td>
                 <td>{{ espectaculo.sala }}</td>
                 <td>{{ espectaculo.tipo }}</td> 
-                <td style="color:red">{{ 'espectaculo.fecha' }}</td>             
-                <td  >{{ espectaculo.description }}</td>
+                <td>{{ espectaculo.fecha|date('d/m/Y') }}</td>
+                <td><a href="http://localhost/espectaculos/web/descr.html.twig">Ver descripion</a></td> 
                 <td><img src="{{ espectaculo.imagen }}" alt="Imagen no disponible" height="100" width="100" ></td>
             </tr>
         {% endfor %}

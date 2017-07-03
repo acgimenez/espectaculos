@@ -22,14 +22,15 @@
             <tr>
                 <td>{{ espectaculo.nombre }}</td>
                 <td>{{ espectaculo.sala }}</td>
-                <td>{{ "espectaculo.fecha" }}</td> 
+                <td>{{ espectaculo.fecha|date('d/m/Y') }}</td>
                 <td>{{ espectaculo.tipo }}</td> 
-                <td>{{ espectaculo.description }}</td>
+                <td>{{ espectaculo.description}}</td>  
+
                 <td><img src="{{ espectaculo.imagen }}" alt="Imagen no disponible" height="100" width="100" ></td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('espectaculo_show', { 'id': espectaculo.id }) }}">mostrar</a>
+                            <a href="{{ path('espectaculo_show', { 'id': espectaculo.id }) }}">Mostrar</a>
                         </li>
                         <li>
                             <a href="{{ path('espectaculo_edit', { 'id': espectaculo.id }) }}">Editar</a>

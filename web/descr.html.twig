@@ -10,30 +10,33 @@
                 <td>{{ espectaculo.id }}</td>
             </tr>
             <tr>
-                <th>Nombrecito</th>
+                <th>Nombre</th>
                 <td>{{ espectaculo.nombre }}</td>
+            </tr>
+
+            <tr>
+                <th>Sala</th>
+                <td>{{ espectaculo.sala }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ espectaculo.tipo }}</td>
             </tr>
             <tr>
                 <th>Descripcion</th>
-                <td>{{ espectaculo.descrpcion }}</td>
+                <td>{{ espectaculo.description }}</td>
             </tr>
             <tr>
-                <td><img src="{{ espectaculo.imagen }}" alt="Imagen no disponible" height="100" width="100" ></td>
-            </tr>    
+                <th>Imagen</th>
+                <td>{{ espectaculo.imagen }}</td>
+            </tr>
+
         </tbody>
     </table>
 
     <ul>
         <li>
             <a href="{{ path('espectaculo_index') }}">Volver a la lista</a>
-        </li>
-        <li>
-            <a href="{{ path('espectaculo_edit', { 'id': espectaculo.id }) }}">Editar</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Eliminar">
-            {{ form_end(delete_form) }}
         </li>
     </ul>
 {% endblock %}
