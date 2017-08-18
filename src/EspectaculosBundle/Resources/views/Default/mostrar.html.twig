@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Espectaculo</h1>
+
+    <div class="row">
+        <div class="col-xs-6 col-md-3">
+            <a>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Nombre:</th>
+                            <td>{{ espectaculo.nombre }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Sala:</th>
+                            <td>{{ espectaculo.sala }}</td>
+                        </tr>
+                        <tr>
+                            <th>Tipo:</th>
+                            <td>{{ espectaculo.tipo }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </a>
+        </div>
+
+    
+        <div class="col-xs-6 col-md-0">
+            <a class="thumbnail">
+                <img src="{{ espectaculo.imagen }}" alt="Sin imagen">
+            </a>
+        </div>
+   
+        <div class="col-xs-6 col-md-2">
+            <a class="container">Descripcion: {{ espectaculo.description }}</a>
+        </div>
+     
+
+    </div>
+
+    <ul>
+        <li>
+            <a href="http://localhost/espectaculos/web/app_dev.php/">Volver a la lista</a>
+        </li>
+
+    </ul>
+{% endblock %}

@@ -6,15 +6,15 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EspectaculoType extends AbstractType
+class EsptoespType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('sala')->add('tipo')->add('fecha')->add('cupo')->add('cuporest')->add('description')
-                ->add('imagen');
+        $builder->add('espectador');
+     //   add('espectaculo')->
     }
     
     /**
@@ -23,7 +23,7 @@ class EspectaculoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'EspectaculosBundle\Entity\Espectaculo'
+            'data_class' => 'EspectaculosBundle\Entity\Esptoesp'
         ));
     }
 
@@ -32,7 +32,7 @@ class EspectaculoType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'espectaculosbundle_espectaculo';
+        return 'espectaculosbundle_esptoesp';
     }
 
 

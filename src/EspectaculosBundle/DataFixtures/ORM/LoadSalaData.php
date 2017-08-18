@@ -29,8 +29,33 @@ Class LoadSalaData extends AbstractFixture implements OrderedFixtureInterface
 		$sala -> setDireccion ('Av Alicia Moreau de Justo 200');
 		$sala -> setTelefono ('011 4455364');
 
+		$salas[] = $sala;
+
+
+		$sala = new Sala();
+		$sala -> setNombre ('Sunstar Cinemas Ushuaia');
+		$sala -> setDireccion ('Av. Perito Moreno 1460-Paseo del Fuego, Ushuaia');
+		$sala -> setTelefono ('No informa');
 
 		$salas[] = $sala;
+
+
+		$sala = new Sala();
+		$sala -> setNombre ('Teatro Colón');
+		$sala -> setDireccion ('Cerrito 628, C1010 CABA');
+		$sala -> setTelefono ('011 4378-7100');
+
+		$salas[] = $sala;
+
+
+		$sala = new Sala();
+		$sala -> setNombre ('Luna Park');
+		$sala -> setDireccion ('Av. Eduardo Madero 470, C1106ACR CABA');
+		$sala -> setTelefono ('011 5278-5800');
+
+		$salas[] = $sala;
+
+
 
 		foreach( $salas as $sala){
 			$manager->persist($sala);
@@ -40,6 +65,10 @@ Class LoadSalaData extends AbstractFixture implements OrderedFixtureInterface
 
 		$this->addReference("Sala1",$salas[0]);
 		$this->addReference("Sala2",$salas[1]);
+		$this->addReference("Sala3",$salas[2]);
+		$this->addReference("Sala4",$salas[3]);
+		$this->addReference("Sala5",$salas[4]);
+
 	}
 
 	public function getOrder(){

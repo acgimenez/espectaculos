@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Nuevo espectador para {{nombre_espectaculo}} {{id_espectaculo}} </h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Asignar" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="http://localhost/espectaculos/web/app_dev.php/esptoesp/esp/lista/{{id_espectaculo}}">Volver a la lista de espectadores</a>
+        </li>
+    </ul>
+{% endblock %}

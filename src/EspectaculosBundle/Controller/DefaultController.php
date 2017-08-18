@@ -6,6 +6,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use EspectaculosBundle\Entity\Espectaculo;
 
 
 class DefaultController extends Controller
@@ -74,13 +76,6 @@ class DefaultController extends Controller
           ->setParameter(4, $criteria['fecha']);
         }
 
-
-        //$qb->andwhere( $qb->expr()->like('p.tipo', '?3'))
-        
-        //$qb->andwhere( $qb->expr()-> gt('p.fecha', '?4'))) //> \"2017-01-01\" 
-                          
-
-
     	}	
 
     	$espectaculo = $qb ->getQuery()->getResult();
@@ -88,22 +83,17 @@ class DefaultController extends Controller
         return $this->render('EspectaculosBundle:Default:index.html.twig', array('espectaculos' => $espectaculo, 'form' => $form->createView()));
     }
 
-/**
+    /**
      * Finds and displays a espectaculo entity.
      *
-     * @Route("/mostrar-{id}", name="espectaculo_show")
+     * @Route("/uno/{id}")
      * @Method("GET")
      */
-/**   public function showAction(Espectaculo $espectaculo)
+    public function unoAction(Espectaculo $espectaculo)
     {
-//        $deleteForm = $this->createDeleteForm($espectaculo);
-
-        return $this->render('espectaculo/mostrar.html.twig', array(
+        return $this->render('EspectaculosBundle:Default:mostrar.html.twig', array(
             'espectaculo' => $espectaculo,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
-*/
-
 }
 

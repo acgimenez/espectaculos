@@ -26,13 +26,23 @@
                 <th>Descripcion</th>
                 <td>{{ espectaculo.description }}</td>
             </tr>
-            <tr>
+           <tr>
                 <th>Imagen</th>
                 <td>{{ espectaculo.imagen }}</td>
             </tr>
 
         </tbody>
     </table>
+    <div class="row">
+      <div class="col-xs-6 col-md-3">
+        <a href="{{ espectaculo.imagen }}" class="thumbnail">
+          <img src="..." alt="sin imagen">
+        </a>
+      </div>
+      ...
+    </div>
+
+
 
     <ul>
         <li>

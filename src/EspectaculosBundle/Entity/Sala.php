@@ -64,6 +64,7 @@ class Sala
 	public function settelefono($atelefono){
 		$this->telefono = $atelefono;
 	}
+	
 	public function __toString(){
 		return $this->getnombre(); 
 	}

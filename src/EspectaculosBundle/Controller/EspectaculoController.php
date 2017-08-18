@@ -136,4 +136,24 @@ class EspectaculoController extends Controller
             ->getForm()
         ;
     }
+
+
+    /**
+     * Asigna espectadores a un espectaculo.
+     *
+     * @Route("/asigna/{id}", name="espectaculo_asigna")
+     * @Method("GET")
+     */
+    public function asignaAction(Espectaculo $espectaculo)
+    {
+        $deleteForm = $this->createDeleteForm($espectaculo);
+
+        return $this->render('espectaculo/show.html.twig', array(
+            'espectaculo' => $espectaculo,
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+
+
 }

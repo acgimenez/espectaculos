@@ -10,6 +10,8 @@
                 <th>Sala</th>
                 <th>Fecha</th>
                 <th>Tipo</th>
+                <th>Cupo</th>
+                <th>Cupo Restante</th>
                 <th>Descripcion</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
@@ -24,6 +26,8 @@
                 <td>{{ espectaculo.sala }}</td>
                 <td>{{ espectaculo.fecha|date('d/m/Y') }}</td>
                 <td>{{ espectaculo.tipo }}</td> 
+                <td>{{ espectaculo.cupo }}</td> 
+                <td>{{ espectaculo.cuporest }}</td> 
                 <td>{{ espectaculo.description}}</td>  
 
                 <td><img src="{{ espectaculo.imagen }}" alt="Imagen no disponible" height="100" width="100" ></td>
@@ -34,6 +38,9 @@
                         </li>
                         <li>
                             <a href="{{ path('espectaculo_edit', { 'id': espectaculo.id }) }}">Editar</a>
+                        </li>
+                        <li>
+                            <a href="http://localhost/espectaculos/web/app_dev.php/esptoesp/esp/lista/{{espectaculo.id}}">Espectadores</a>
                         </li>
                     </ul>
                 </td>

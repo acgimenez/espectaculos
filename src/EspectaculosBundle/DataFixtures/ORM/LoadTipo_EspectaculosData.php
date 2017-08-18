@@ -33,6 +33,13 @@ Class LoadTipo_EspectaculosData extends AbstractFixture implements OrderedFixtur
 		$Tipos[] = $tipo;
 
 
+		$tipo = new TipoEspectaculos();
+		$tipo -> setNombre ('Concierto');
+
+		$Tipos[] = $tipo;
+
+
+
 		foreach( $Tipos as $tipoespectaculo){
 			$manager->persist($tipoespectaculo);
 		}
@@ -43,6 +50,7 @@ Class LoadTipo_EspectaculosData extends AbstractFixture implements OrderedFixtur
 		$this->addReference("Tipo1",$Tipos[0]);
 		$this->addReference("Tipo2",$Tipos[1]);
 		$this->addReference("Tipo3",$Tipos[2]);
+		$this->addReference("Tipo4",$Tipos[3]);		
 	}
 
 	public function getOrder(){

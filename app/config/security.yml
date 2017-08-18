@@ -49,3 +49,5 @@ security:
         - { path: ^/sala, role: ROLE_ADMIN}
         - { path: ^/espectaculo, role: ROLE_ADMIN}
         - { path: ^/tipoespectaculos, role: ROLE_ADMIN}
+        - { path: ^/espectador, role: ROLE_ADMIN}
+

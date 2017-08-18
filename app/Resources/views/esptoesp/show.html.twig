@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Eliminar Espectador en {{ esptoesp.espectaculo }} {{espectaculo}} </h1>
+
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ esptoesp.id }}</td>
+                <th>Espectador</th>
+                <td>{{ esptoesp.espectador }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+ 
+    <ul>
+        <li>
+            <a href="http://localhost/espectaculos/web/app_dev.php/esptoesp/esp/lista/{{espectaculo}}"> Volver a la lista de espectadores </a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Confirma eliminar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

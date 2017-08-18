@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lista (lista)de asignaciones {{esptoesps[0].espectaculo}} </h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Espectaculo</th>
+                <th>Espectador</th>
+
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for esptoesp in esptoesps %}
+            <tr>
+               <td>{{esptoesp.espectaculo}}
+               <td>{{esptoesp.espectador}}
+
+
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('esptoesp_show', { 'id': esptoesp.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('esptoesp_edit', { 'id': esptoesp.id }) }}">edit</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ path('esptoesp_edit', { 'id': esptoesp.id }) }}">Eliminar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('esptoesp_new') }}">Agregar espectador</a>
+        </li>
+        <li>
+            <a href="{{ path('espectaculo_index') }}">Volver a la lista de espectaculos</a>
+        </li>
+    </ul>
+{% endblock %}

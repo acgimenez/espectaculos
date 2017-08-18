@@ -5,11 +5,12 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                 <th>Sala</th>
-                 <th>Tipo</th> 
-                 <th>Fecha</th> 
-                 <th>Descripcion</th>
-                 <th>Imagen</th>             
+                <th>Sala</th>
+                <th>Tipo</th> 
+                <th>Fecha</th> 
+                <th>Cupo restante</th>             
+                <th>Descripcion</th>
+                <th>Imagen</th>             
              </tr>
         </thead>
         <tbody>
@@ -19,7 +20,8 @@
                 <td>{{ espectaculo.sala }}</td>
                 <td>{{ espectaculo.tipo }}</td> 
                 <td>{{ espectaculo.fecha|date('d/m/Y') }}</td>
-                <td><a href="http://localhost/espectaculos/mostrar.html.twig">Ver descripion</a></td> 
+                <td>{{ espectaculo.cuporest }}</td> 
+                <td><a href="http://localhost/espectaculos/web/app_dev.php/uno/{{espectaculo.id}}">Ver descripion</a></td> 
                 <td><img src="{{ espectaculo.imagen }}" alt="Imagen no disponible" height="100" width="100" ></td>
             </tr>
         {% endfor %}

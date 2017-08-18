@@ -31,19 +31,34 @@ class Espectaculo
 	/**
 	 * @ORM\Column(type="date", name="Desde", nullable=true)
 	 */
+
 	protected $fecha;
+	
 	/**
 	 * @ORM\ManyToOne(targetEntity="TipoEspectaculos")
 	 */
+
 	protected $tipo;
 	/** 
 	 * @ORM\Column(type="text")
 	 */
+
 	protected $description;	
 	/**
 	 * @ORM\Column(type="string", length=100)
 	 */
 	protected $imagen;
+
+	/**
+	 * @ORM\Column(type="integer")
+	 */
+	protected $cupo;
+
+	/**
+	 * @ORM\Column(type="integer")
+	 */
+	protected $cuporest;
+
 
 
 	public function getId(){
@@ -100,8 +115,28 @@ class Espectaculo
 
 		}
 
+	public function getCupo(){
+		return $this->cupo;
+	}
+
+	public function setCupo($acupo){
+		$this->cupo = $acupo;
+	}
+
+	public function getCuporest(){
+		return $this->cuporest;
+	}
+
+	public function setCuporest($acuporest){
+		$this->cuporest = $acuporest;
+	}
+
+
+
 	public function __toString(){
 		return $this->getnombre(); 
 	}
+
+
 	
 }

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lista de Espectadores</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dni</th>
+                <th>Fecha nacimiento</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for espectador in espectadors %}
+            <tr>
+                <td><a href="{{ path('espectador_show', { 'id': espectador.id }) }}">{{ espectador.id }}</a></td>
+                <td>{{ espectador.nombre }}</td>
+                <td>{{ espectador.apellido }}</td>
+                <td>{{ espectador.dni }}</td>
+                <td>{% if espectador.fechanac %}{{ espectador.fechanac|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('espectador_show', { 'id': espectador.id }) }}">Mostrar</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('espectador_edit', { 'id': espectador.id }) }}">Editar</a>
+                        </li>
+                        <li>
+                            <a href="#">Espectáculos</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('espectador_new') }}">Crear un nuevo espectador</a>
+        </li>
+    </ul>
+{% endblock %}
