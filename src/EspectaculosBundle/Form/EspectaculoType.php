@@ -13,8 +13,10 @@ class EspectaculoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('sala')->add('tipo')->add('fecha')->add('cupo')->add('cuporest')->add('description')
+        $builder->add('nombre')->add('sala')->add('tipo')->add('fecha')->add('cupo')->add('description')
                 ->add('imagen');
+
+  //              ->add('cuporest')
     }
     
     /**

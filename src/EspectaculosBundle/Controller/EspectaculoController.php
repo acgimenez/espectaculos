@@ -2,6 +2,7 @@
 
 namespace EspectaculosBundle\Controller;
 
+use EspectaculosBundle\Entity\Esptoesp;
 use EspectaculosBundle\Entity\Espectaculo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -46,6 +47,10 @@ class EspectaculoController extends Controller
         $form = $this->createForm('EspectaculosBundle\Form\EspectaculoType', $espectaculo);
         $form->handleRequest($request);
 
+        $cuporest=$espectaculo->getCupo();
+        $espectaculo -> setCuporest ($cuporest);
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($espectaculo);
@@ -68,11 +73,25 @@ class EspectaculoController extends Controller
      */
     public function showAction(Espectaculo $espectaculo)
     {
+
+        $id_espectaculo = $espectaculo->getId();
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder('p');
+        $qb->select('p')
+           ->from('EspectaculosBundle:Esptoesp','p');
+        $qb->where('p.espectaculo = ?1') 
+           ->setParameter(1, $id_espectaculo);
+        $queryres = $qb ->getQuery()->getResult();
+
+
+
         $deleteForm = $this->createDeleteForm($espectaculo);
 
         return $this->render('espectaculo/show.html.twig', array(
             'espectaculo' => $espectaculo,
             'delete_form' => $deleteForm->createView(),
+            'esplist' => $queryres,
+
         ));
     }
 
@@ -84,6 +103,10 @@ class EspectaculoController extends Controller
      */
     public function editAction(Request $request, Espectaculo $espectaculo)
     {
+
+
+
+
         $deleteForm = $this->createDeleteForm($espectaculo);
         $editForm = $this->createForm('EspectaculosBundle\Form\EspectaculoType', $espectaculo);
         $editForm->handleRequest($request);

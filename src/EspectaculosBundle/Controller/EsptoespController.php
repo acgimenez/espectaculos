@@ -2,6 +2,7 @@
 
 namespace EspectaculosBundle\Controller;
 
+use EspectaculosBundle\web\js\jquery;
 use EspectaculosBundle\Entity\Esptoesp;
 use EspectaculosBundle\Entity\Espectaculo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,7 +28,7 @@ class EsptoespController extends Controller
      * @Route("/", name="esptoesp_index")
      * @Method("GET")
      */
-    public function indexAction()
+/**    public function indexAction()
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -37,6 +38,9 @@ class EsptoespController extends Controller
             'esptoesps' => $esptoesps,
         ));
     }
+
+*/
+
 
     /**
      * Creates a new esptoesp entity.
@@ -48,17 +52,43 @@ class EsptoespController extends Controller
     {
         $id_espectaculo = $espectaculo->getId();
         $nombre_espectaculo=$espectaculo->getNombre();
- 
-        $esptoesp = new Esptoesp();
+        $cupo_rest=$espectaculo->getCuporest()-1;
 
-       $form = $this->createForm('EspectaculosBundle\Form\EsptoespType', $esptoesp);
+        $esptoesp = new Esptoesp();
+ 
+        $form = $this->createForm('EspectaculosBundle\Form\EsptoespType', $esptoesp);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $esptoesp -> setEspectaculo ($espectaculo);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($esptoesp);
-            $em->flush();
+
+            $espectadorvacio = ($esptoesp->getEspectador());
+
+            if(is_null($espectadorvacio)){
+                $existe=(is_null($espectadorvacio));
+            }else{
+                $id_espectador = $esptoesp->getEspectador()->getId();
+
+                $qb = $this->getDoctrine()->getManager()->createQueryBuilder('p');
+                $qb->select('p')
+                    ->from('EspectaculosBundle:Esptoesp','p');
+                $qb->where('p.espectaculo = ?1') 
+                   ->setParameter(1, $id_espectaculo);
+                $qb->andwhere( 'p.espectador = ?2')
+                   ->setParameter(2, $id_espectador);
+                $queryres = $qb ->getQuery()->getResult();
+                $existe=(count($queryres)>'0');
+            }
+
+           if (!$existe) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($esptoesp);
+                $em->flush();
+            }
+            else { 
+                echo '<script language="javascript">alert("El espectador ya existe");</script>';
+            }
+
 
             return $this->redirectToRoute('esptoesp_lista', array("id" => $id_espectaculo));
         }
@@ -129,6 +159,12 @@ class EsptoespController extends Controller
      */
     public function deleteAction(Request $request, Esptoesp $esptoesp)
     {
+//        var_dump($espectaculo);
+//        die;
+
+//        $cupo_rest=$espectaculo->getCuporest()+1;
+
+
         $id_espectaculo = $esptoesp->getEspectaculo()->getId();
 
         $form = $this->createDeleteForm($esptoesp);
@@ -139,6 +175,7 @@ class EsptoespController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($esptoesp);
             $em->flush();
+
         }
         
         return $this->redirectToRoute('esptoesp_lista', array("id" => $id_espectaculo));
@@ -166,34 +203,29 @@ class EsptoespController extends Controller
      * @Route("/esp/lista/{id}", name="esptoesp_lista")
      * @Method("GET")
      */
-    public function listaAction(Espectaculo $ale)
+    public function listaAction(Espectaculo $espectaculo)
     {
 #
-        $id = $ale->getId();
-        $nombre=$ale->getNombre();
-        $restante=$ale->getCuporest();
+        $id = $espectaculo->getId();
+        $nombre=$espectaculo->getNombre();
+        $restante=$espectaculo->getCuporest();
+        $cupo=$espectaculo->getCupo();
 
-
-  #      var_dump($nombre);
-
-   #     die();
-        
- #       $ale=$id;
- #      $em = $this->getDoctrine()->getManager();
- #      $esptoesps = $em->getRepository('EspectaculosBundle:Esptoesp')->findAll();
 
         $qb = $this->getDoctrine()->getManager()->createQueryBuilder('p');
         $qb->select('p')
             ->from('EspectaculosBundle:Esptoesp','p');
-
         $qb->where('p.espectaculo = ?1') 
            ->setParameter(1, $id);
 
-#        $qb->where( $qb->expr()->like('p.espectaculo', ?1'))  
-#           ->setParameter(1, $ale);
-
-
         $esptoesps = $qb ->getQuery()->getResult();
+
+        $restante=$cupo - count($esptoesps);
+        $em = $this->getDoctrine()->getManager();
+        $espectaculo->setCuporest($restante);
+        $em->persist($espectaculo);
+        $em->flush();
+
 
         return $this->render('esptoesp/lista.html.twig', array(
             'esptoesps' => $esptoesps, 
@@ -203,9 +235,6 @@ class EsptoespController extends Controller
         ));
 
 
-//        return $this->render('EspectaculosBundle:Default:listaespectadores.html.twig', array(
-//            'esptoesps' => $esptoesps, 
-//        ));
     }
 
  

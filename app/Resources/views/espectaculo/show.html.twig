@@ -2,46 +2,60 @@
 
 {% block body %}
     <h1>Espectaculo</h1>
+    <div >
+        <table>
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ espectaculo.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <td>{{ espectaculo.nombre }}</td>
+                </tr>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ espectaculo.id }}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
-                <td>{{ espectaculo.nombre }}</td>
-            </tr>
-
-            <tr>
-                <th>Sala</th>
-                <td>{{ espectaculo.sala }}</td>
-            </tr>
-            <tr>
-                <th>Tipo</th>
-                <td>{{ espectaculo.tipo }}</td>
-            </tr>
-            <tr>
-                <th>Descripcion</th>
-                <td>{{ espectaculo.description }}</td>
-            </tr>
-            <tr>
-                <th>Cupo</th>
-                <td>{{ espectaculo.cupo}}</td>
-            </tr>
-            <tr>
-                <th>Cupo Restante</th>
-                <td>{{ espectaculo.cuporest }}</td>
-            </tr>
-            <tr>
-                <th>Imagen</th>
-                <td>{{ espectaculo.imagen }}</td>
-            </tr>
-
-        </tbody>
-    </table>
-
+                <tr>
+                    <th>Sala</th>
+                    <td>{{ espectaculo.sala }}</td>
+                </tr>
+                <tr>
+                    <th>Tipo</th>
+                    <td>{{ espectaculo.tipo }}</td>
+                </tr>
+                <tr>
+                    <th>Descripcion</th>
+                    <td>{{ espectaculo.description }}</td>
+                </tr>
+                <tr>
+                    <th>Cupo</th>
+                    <td>{{ espectaculo.cupo}}</td>
+                </tr>
+                <tr>
+                    <th>Cupo Restante</th>
+                    <td>{{ espectaculo.cuporest }}</td>
+                </tr>
+                <tr>
+                    <th>Imagen</th>
+                    <td>{{ espectaculo.imagen }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>        
+        <div class="table">
+             <table >
+                <thead><tr><th>Lista de espectadores</th></tr></thead>
+                <tbody>
+                    {% for espectadores in esplist %}
+                        <tr>
+                           <td>{{espectadores.espectador}} </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div> 
+    </div>
+ 
     <ul>
         <li>
             <a href="{{ path('espectaculo_index') }}">Volver a la lista</a>

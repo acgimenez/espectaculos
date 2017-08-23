@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Espectador controller.
@@ -21,14 +23,58 @@ class EspectadorController extends Controller
      * @Route("/", name="espectador_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+#        $em = $this->getDoctrine()->getManager();
 
-        $espectadors = $em->getRepository('EspectaculosBundle:Espectador')->findAll();
+#        $espectadors = $em->getRepository('EspectaculosBundle:Espectador')->findAll();
+
+
+        $form = $this->createFormBuilder()
+            ->setMethod('GET')
+            ->add('nombre', 'text', array('required' => false))
+
+            ->add('apellido', 'text', array('required' => false))
+
+            ->add('dni', 'text', array('required' => false))
+
+            ->add('Filtrar', 'submit')
+        
+            ->getForm();
+
+        $qb = $this->getDoctrine()->getManager()->createQueryBuilder('p');
+        $qb->select('p')
+            ->from('EspectaculosBundle:Espectador','p');
+
+
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $criteria = $form->getData();
+        $qb->where('1=1');
+            
+        if ($criteria['nombre']){
+          $qb->andwhere( $qb->expr()->like('p.nombre', '?1'))
+          ->setParameter(1, $criteria['nombre']);
+        }
+        if ($criteria['apellido']){
+          $qb->andwhere( 'p.apellido = ?2')
+          ->setParameter(2, $criteria['apellido']);
+        }
+
+        if ($criteria['dni']){
+          $qb->andwhere( 'p.dni = ?3')
+          ->setParameter(3, $criteria['dni']);
+        }
+
+
+        }   
+
+        $espectadors = $qb ->getQuery()->getResult();
+
 
         return $this->render('espectador/index.html.twig', array(
             'espectadors' => $espectadors,
+            'form' => $form->createView(),
         ));
     }
 

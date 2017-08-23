@@ -22,7 +22,7 @@
                 <td>{{ espectador.dni }}</td>
             </tr>
             <tr>
-                <th>Fechanac</th>
+                <th>Fecha nacimiento</th>
                 <td>{% if espectador.fechanac %}{{ espectador.fechanac|date('Y-m-d') }}{% endif %}</td>
             </tr>
         </tbody>
@@ -30,14 +30,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('espectador_index') }}">Back to the list</a>
+            <a href="{{ path('espectador_index') }}">Volver a la lista</a>
         </li>
         <li>
-            <a href="{{ path('espectador_edit', { 'id': espectador.id }) }}">Edit</a>
+            <a href="{{ path('espectador_edit', { 'id': espectador.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

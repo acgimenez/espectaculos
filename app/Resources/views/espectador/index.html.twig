@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1>Lista de Espectadores</h1>
-
+    {{ form(form) }}
     <table class="table">
         <thead>
             <tr>
@@ -29,9 +29,6 @@
                         </li>
                         <li>
                             <a href="{{ path('espectador_edit', { 'id': espectador.id }) }}">Editar</a>
-                        </li>
-                        <li>
-                            <a href="#">Espectáculos</a>
                         </li>
                     </ul>
                 </td>
