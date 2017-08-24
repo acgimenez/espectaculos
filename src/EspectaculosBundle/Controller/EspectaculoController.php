@@ -105,6 +105,9 @@ class EspectaculoController extends Controller
     {
 
 
+        $cupo=$espectaculo->getCupo();
+        $cupo_rest=$espectaculo->getCuporest();
+        $cantesp=$cupo-$cupo_rest;
 
 
         $deleteForm = $this->createDeleteForm($espectaculo);
@@ -112,6 +115,11 @@ class EspectaculoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+
+            $cupo=$espectaculo->getCupo();
+            $espectaculo->setCuporest($cupo-$cantesp);
+
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('espectaculo_edit', array('id' => $espectaculo->getId()));
