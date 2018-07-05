@@ -306,6 +306,6 @@ Class LoadEspectadorData extends AbstractFixture implements OrderedFixtureInterf
 	}
 
 	public function getOrder(){
-		return 3;
+		return 4;
 	}
 }

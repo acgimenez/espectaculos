@@ -54,7 +54,7 @@ Class LoadTipo_EspectaculosData extends AbstractFixture implements OrderedFixtur
 	}
 
 	public function getOrder(){
-		return 2;
+		return 3;
 	}
 
 }
