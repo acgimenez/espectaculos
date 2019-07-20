@@ -10,7 +10,7 @@
 
     <ul>
         <li>
-            <a href="http://localhost/espectaculos/web/app_dev.php/esptoesp/esp/lista/{{id_espectaculo}}">Volver a la lista de espectadores</a>
+          <a href="{{ path('esptoesp_lista', { 'id': id_espectaculo }) }}">Volver a la lista de espectadores</a>
         </li>
     </ul>
 {% endblock %}

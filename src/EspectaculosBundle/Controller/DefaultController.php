@@ -13,7 +13,7 @@ use EspectaculosBundle\Entity\Espectaculo;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/" , name="home")
      */
    public function indexAction(Request $request)
     {
@@ -72,7 +72,7 @@ class DefaultController extends Controller
         }
 
         if ($criteria['fecha']){
-          $qb->andwhere( 'p.fecha = ?4')
+          $qb->andwhere( 'p.fecha >= ?4')
           ->setParameter(4, $criteria['fecha']);
         }
 

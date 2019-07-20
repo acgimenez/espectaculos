@@ -18,7 +18,7 @@
  
     <ul>
         <li>
-            <a href="http://localhost/espectaculos/web/app_dev.php/esptoesp/esp/lista/{{espectaculo}}"> Volver a la lista de espectadores </a>
+            <a href="{{ path('esptoesp_lista', { 'id': espectaculo }) }}"> Volver a la lista de espectadores </a>
         </li>
         <li>
             {{ form_start(delete_form) }}
